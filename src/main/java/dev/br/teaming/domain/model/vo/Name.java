@@ -10,7 +10,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter @EqualsAndHashCode
+@EqualsAndHashCode
 public class Name {
 
     private String name;
@@ -22,4 +22,7 @@ public class Name {
         this.name = name;
     }
 
+    public String getValue() {
+        return name;
+    }
 }

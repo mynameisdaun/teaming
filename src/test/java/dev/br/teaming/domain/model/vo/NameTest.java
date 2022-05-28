@@ -21,7 +21,7 @@ class NameTest {
         final Name name = new Name(str);
         //then
         assertThat(name).isNotNull();
-        assertThat(name.getName()).isEqualTo("stew");
+        assertThat(name.getValue()).isEqualTo("stew");
     }
 
     @DisplayName(value = "이름은 빈 값이 될 수 없다")
