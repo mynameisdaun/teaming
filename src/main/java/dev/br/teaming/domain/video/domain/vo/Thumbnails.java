@@ -1,16 +1,21 @@
 package dev.br.teaming.domain.video.domain.vo;
 
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
+import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.Objects;
 
+@Getter
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Thumbnails {
 
+    @OneToMany(mappedBy = "video", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Thumbnail> thumbnails;
 
     public Thumbnails(List<Thumbnail> thumbnails) {

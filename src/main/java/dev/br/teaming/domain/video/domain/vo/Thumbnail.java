@@ -5,10 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 
+import javax.persistence.Embeddable;
 import java.util.Objects;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Embeddable
 public class Thumbnail {
 
     private ThumbnailType type;
