@@ -5,7 +5,7 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-**/resources/youtube.properties
+youtube.properties
 
 ### STS ###
 .apt_generated
