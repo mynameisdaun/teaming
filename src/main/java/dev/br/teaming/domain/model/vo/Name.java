@@ -16,7 +16,7 @@ public class Name {
     private String name;
 
     public Name(String name) {
-        if(!Strings.isNotEmpty(name)) {
+        if(!Strings.isNotBlank(name)) {
             throw new IllegalArgumentException();
         }
         this.name = name;
