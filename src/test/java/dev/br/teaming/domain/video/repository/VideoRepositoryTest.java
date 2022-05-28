@@ -73,6 +73,5 @@ class VideoRepositoryTest {
         //when&&then
         assertThatThrownBy(()-> videoRepository.findByVideoId(new VideoId("no-exist-Id")).orElseThrow(NoSuchElementException::new))
                 .isInstanceOf(NoSuchElementException.class);
-        //comment
     }
 }
