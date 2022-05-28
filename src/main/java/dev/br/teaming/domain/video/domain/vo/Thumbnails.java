@@ -19,4 +19,12 @@ public class Thumbnails {
         }
         this.thumbnails = thumbnails;
     }
+
+    public boolean isEmpty() {
+        return thumbnails.isEmpty();
+    }
+
+    public int size() {
+        return thumbnails.size();
+    }
 }
