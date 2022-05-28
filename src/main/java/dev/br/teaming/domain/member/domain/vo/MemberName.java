@@ -1,0 +1,27 @@
+package dev.br.teaming.domain.member.domain.vo;
+
+import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import org.apache.logging.log4j.util.Strings;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EqualsAndHashCode
+public class MemberName {
+
+    private String name;
+
+    public MemberName(String name) {
+        if (!Strings.isNotBlank(name)) {
+            throw new IllegalArgumentException();
+        }
+        this.name = name;
+    }
+
+    public String getValue() {
+        return name;
+    }
+}
