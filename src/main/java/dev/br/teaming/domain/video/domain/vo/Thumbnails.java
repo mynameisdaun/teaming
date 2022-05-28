@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Thumbnails {
 
-    @OneToMany(mappedBy = "video", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @ElementCollection
     private List<Thumbnail> thumbnails;
 
     public Thumbnails(List<Thumbnail> thumbnails) {

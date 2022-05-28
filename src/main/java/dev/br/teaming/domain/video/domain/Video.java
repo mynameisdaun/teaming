@@ -1,16 +1,17 @@
 package dev.br.teaming.domain.video.domain;
 
 import dev.br.teaming.domain.model.vo.Name;
-import dev.br.teaming.domain.video.domain.vo.Description;
-import dev.br.teaming.domain.video.domain.vo.Thumbnails;
-import dev.br.teaming.domain.video.domain.vo.VideoId;
-import dev.br.teaming.domain.video.domain.vo.Youtuber;
+import dev.br.teaming.domain.video.domain.vo.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "video")
 @Getter
 public class Video {
@@ -20,12 +21,12 @@ public class Video {
     private long videoSeq;
 
     @Embedded
-    @Column(name = "video_id", nullable = false)
+    @Column(name = "video_id", nullable = false, unique = true)
     private VideoId videoId;
 
     @Embedded
     @Column(name = "video_title", nullable = false)
-    private Name title;
+    private VideoTitle videoTitle;
 
     @Embedded
     @Column(name = "video_description", nullable = false)
@@ -40,6 +41,19 @@ public class Video {
 
     @Embedded
     private Thumbnails thumbnails;
+
+    public Video(VideoId videoId, VideoTitle title, Description description, Date publishedAt, Youtuber youtuber, Thumbnails thumbnails) {
+        if(Objects.isNull(videoId) || Objects.isNull(title) || Objects.isNull(description) ||
+           Objects.isNull(publishedAt) || Objects.isNull(youtuber) || Objects.isNull(thumbnails)) {
+            throw new IllegalArgumentException();
+        }
+        this.videoId = videoId;
+        this.videoTitle = title;
+        this.description = description;
+        this.publishedAt = publishedAt;
+        this.youtuber = youtuber;
+        this.thumbnails = thumbnails;
+    }
 
     @Override
     public boolean equals(Object o) {

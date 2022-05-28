@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
@@ -15,7 +16,10 @@ import javax.persistence.Embeddable;
 @EqualsAndHashCode
 public class Youtuber {
 
+    @Column(name = "youtuber_id")
     private String youtuberId;
+
+    @Column(name = "youtuber_name")
     private Name name;
 
     public Youtuber(String youtuberId, String name) {
