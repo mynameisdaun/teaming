@@ -1,4 +1,4 @@
-package dev.br.teaming.domain.member.domain.vo;
+package dev.br.teaming.domain.player.domain.vo;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -10,11 +10,11 @@ import javax.persistence.Embeddable;
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode
-public class MemberName {
+public class PlayerName {
 
     private String name;
 
-    public MemberName(String name) {
+    public PlayerName(String name) {
         if (!Strings.isNotBlank(name)) {
             throw new IllegalArgumentException();
         }
