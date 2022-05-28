@@ -15,7 +15,7 @@ public class Description {
     private String description;
 
     public Description(String description) {
-        if(!Strings.isNotBlank(description)) {
+        if (!Strings.isNotBlank(description)) {
             throw new IllegalArgumentException();
         }
         this.description = description;

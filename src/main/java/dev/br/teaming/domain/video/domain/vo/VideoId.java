@@ -17,7 +17,7 @@ public class VideoId {
     private String videoId;
 
     public VideoId(String videoId) {
-        if(!Strings.isNotBlank(videoId)) {
+        if (!Strings.isNotBlank(videoId)) {
             throw new IllegalArgumentException();
         }
         this.videoId = videoId;

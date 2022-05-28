@@ -19,7 +19,7 @@ public class Thumbnails {
     private List<Thumbnail> thumbnails;
 
     public Thumbnails(List<Thumbnail> thumbnails) {
-        if(Objects.isNull(thumbnails) || thumbnails.isEmpty()) {
+        if (Objects.isNull(thumbnails) || thumbnails.isEmpty()) {
             throw new IllegalArgumentException();
         }
         this.thumbnails = thumbnails;

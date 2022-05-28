@@ -1,6 +1,5 @@
 package dev.br.teaming.domain.video.domain.vo;
 
-import dev.br.teaming.domain.video.domain.Video;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

@@ -35,7 +35,7 @@ class ThumbnailTest {
     }
 
     @DisplayName(value = "썸네일 url은 빈 값이 될 수 없다")
-    @ValueSource(strings = {""," "})
+    @ValueSource(strings = {"", " "})
     @NullSource
     @ParameterizedTest
     void create_fail_wrong_url(final String url) throws Exception {
@@ -45,7 +45,7 @@ class ThumbnailTest {
     }
 
     @DisplayName(value = "width는 0 이상이어야 한다")
-    @ValueSource(strings = {"-1","0"})
+    @ValueSource(strings = {"-1", "0"})
     @NullSource
     @ParameterizedTest
     void create_fail_wrong_width(final Double width) throws Exception {
@@ -55,7 +55,7 @@ class ThumbnailTest {
     }
 
     @DisplayName(value = "height는 0 이상이어야 한다")
-    @ValueSource(strings = {"-1","0"})
+    @ValueSource(strings = {"-1", "0"})
     @NullSource
     @ParameterizedTest
     void create_fail_wrong_height(final Double height) throws Exception {

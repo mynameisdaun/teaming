@@ -15,7 +15,8 @@ import java.util.Date;
 @Getter
 public class Video {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long videoSeq;
 
     @Embedded

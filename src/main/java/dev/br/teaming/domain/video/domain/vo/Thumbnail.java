@@ -19,7 +19,7 @@ public class Thumbnail {
     private Double height;
 
     public Thumbnail(ThumbnailType type, String url, Double width, Double height) {
-        if(Objects.isNull(type) || Strings.isBlank(url) || width == null || width <=0 || height == null || height <= 0) {
+        if (Objects.isNull(type) || Strings.isBlank(url) || width == null || width <= 0 || height == null || height <= 0) {
             throw new IllegalArgumentException();
         }
         this.type = type;
