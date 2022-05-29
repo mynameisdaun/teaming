@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class TrophyTest {
+class PlayerTrophyTest {
 
     static Stream<Arguments> wrong_trophies_list() {
         return Stream.of(
@@ -27,11 +27,11 @@ class TrophyTest {
         final int currentTrophy = 10;
         final int highestTrophy = 100;
         //when
-        final Trophy trophy = new Trophy(currentTrophy, highestTrophy);
+        final PlayerTrophy playerTrophy = new PlayerTrophy(currentTrophy, highestTrophy);
         //then
-        assertThat(trophy).isNotNull();
-        assertThat(trophy.getCurrentTrophy()).isEqualTo(10);
-        assertThat(trophy.getHighestTrophy()).isEqualTo(100);
+        assertThat(playerTrophy).isNotNull();
+        assertThat(playerTrophy.getCurrentTrophy()).isEqualTo(10);
+        assertThat(playerTrophy.getHighestTrophy()).isEqualTo(100);
     }
     
     @DisplayName(value = "트로피의 각 개수는 0이상이어야 한다")
@@ -39,7 +39,7 @@ class TrophyTest {
     @ParameterizedTest
     void create_fail_wrong_trophy(final int currentTrophy, final int highestTrophy) throws Exception {
         //given&&when&&then
-        assertThatThrownBy(() -> new Trophy(currentTrophy, highestTrophy))
+        assertThatThrownBy(() -> new PlayerTrophy(currentTrophy, highestTrophy))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -47,7 +47,7 @@ class TrophyTest {
     @Test
     void create_invalid_trophy_highest_should_gt_current() throws Exception {
         //given&&when&&then
-        assertThatThrownBy(() -> new Trophy(20, 10))
+        assertThatThrownBy(() -> new PlayerTrophy(20, 10))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

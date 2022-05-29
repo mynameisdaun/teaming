@@ -13,7 +13,7 @@ import java.util.Objects;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode
-public class Trophy {
+public class PlayerTrophy {
 
     @Column(name="trophy_current")
     private int currentTrophy;
@@ -21,7 +21,7 @@ public class Trophy {
     @Column(name="trophy_highest")
     private int highestTrophy;
 
-    public Trophy(int currentTrophy, int highestTrophy) {
+    public PlayerTrophy(int currentTrophy, int highestTrophy) {
         if(Objects.isNull(currentTrophy) || Objects.isNull(highestTrophy) || currentTrophy < 0  || highestTrophy < 0 || currentTrophy > highestTrophy) {
             throw new IllegalArgumentException();
         }
