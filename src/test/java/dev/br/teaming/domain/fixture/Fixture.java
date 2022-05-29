@@ -1,9 +1,6 @@
 package dev.br.teaming.domain.fixture;
 
-import dev.br.teaming.domain.player.domain.vo.brawler.Gadget;
-import dev.br.teaming.domain.player.domain.vo.brawler.Gear;
-import dev.br.teaming.domain.player.domain.vo.brawler.GearType;
-import dev.br.teaming.domain.player.domain.vo.brawler.StarPower;
+import dev.br.teaming.domain.player.domain.vo.brawler.*;
 import dev.br.teaming.domain.video.domain.Video;
 import dev.br.teaming.domain.video.domain.vo.*;
 
@@ -36,6 +33,19 @@ public class Fixture {
 
     public static StarPower starPower() {
         return new StarPower(23000438, "FRESH KICKS");
+    }
+
+    public static Brawler brawler() {
+        Integer brawlerId = 16000045;
+        String brawlerName = "STU";
+        Integer power = 10;
+        Integer rank = 21;
+        Integer trophies = 553;
+        Integer highestTrophies = 595;
+        Gears gears = new Gears(Arrays.asList(gear()));
+        StarPowers starPowers = new StarPowers(Arrays.asList(starPower()));
+        Gadgets gadgets = new Gadgets(Arrays.asList(gadget()));
+        return new Brawler(brawlerId, brawlerName, power, rank, trophies, highestTrophies, gears, starPowers, gadgets);
     }
 
 }
