@@ -1,5 +1,9 @@
 package dev.br.teaming.domain.fixture;
 
+import dev.br.teaming.domain.player.domain.vo.brawler.Gadget;
+import dev.br.teaming.domain.player.domain.vo.brawler.Gear;
+import dev.br.teaming.domain.player.domain.vo.brawler.GearType;
+import dev.br.teaming.domain.player.domain.vo.brawler.StarPower;
 import dev.br.teaming.domain.video.domain.Video;
 import dev.br.teaming.domain.video.domain.vo.*;
 
@@ -20,6 +24,18 @@ public class Fixture {
 
     public static Thumbnail thumbnail() {
         return new Thumbnail(ThumbnailType.DEFAULT, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120.0, 90.0);
+    }
+
+    public static Gadget gadget() {
+        return new Gadget(23000433, "FREEZE FRAME");
+    }
+
+    public static Gear gear() {
+        return new Gear(62000000, 3, GearType.SPEED);
+    }
+
+    public static StarPower starPower() {
+        return new StarPower(23000438, "FRESH KICKS");
     }
 
 }
