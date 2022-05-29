@@ -30,8 +30,9 @@ class ClubTest {
     @NullSource
     @ParameterizedTest
     void create_fail_wrong_club_tag(final String tag) throws Exception {
-        //given&&when&&then
+        //given
         final String clubName = "다운클럽";
+        // when&then
         assertThatThrownBy(() -> new Club(tag, clubName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -41,10 +42,10 @@ class ClubTest {
     @NullSource
     @ParameterizedTest
     void create_fail_wrong_name(final String name) throws Exception {
-        //given&&when&&then
+        //given
         final String clubTag = "#LGPVQV";
+        //when&then
         assertThatThrownBy(() -> new Club(clubTag, name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
 }
