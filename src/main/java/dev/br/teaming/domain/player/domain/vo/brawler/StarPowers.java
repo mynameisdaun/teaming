@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Embeddable;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +15,8 @@ import java.util.Objects;
 @EqualsAndHashCode
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StarPowers {
+
+    @ElementCollection
     private List<StarPower> starPowers;
 
     public StarPowers(List<StarPower> starPowers) {

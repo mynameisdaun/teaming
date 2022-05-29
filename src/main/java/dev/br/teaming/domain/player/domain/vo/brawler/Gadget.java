@@ -6,14 +6,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.util.Objects;
 
 @Getter
+@Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode
 public class Gadget {
-
+    @Column(name = "gadget_id")
     private Integer gadgetId;
+    @Column(name = "gadget_name")
     private String gadgetName;
 
     public Gadget(Integer gadgetId, String gadgetName) {

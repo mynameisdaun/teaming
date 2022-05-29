@@ -4,14 +4,19 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.util.Objects;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Embeddable
 public class Gear {
-
+    @Column(name = "gear_id")
     private Integer gearId;
+    @Column(name = "gear_level")
     private Integer gearLevel;
+    @Column(name = "gear_type")
     private GearType gearType;
 
     public Gear(Integer gearId, Integer gearLevel, GearType gearType) {
