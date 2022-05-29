@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 import java.util.List;
+import java.util.Objects;
 
 @Embeddable
 @Getter
@@ -16,6 +17,9 @@ public class Gadgets {
     private List<Gadget> gadgets;
 
     public Gadgets(List<Gadget> gadgets) {
+        if(Objects.isNull(gadgets)) {
+            throw new IllegalArgumentException();
+        }
         this.gadgets = gadgets;
     }
 
