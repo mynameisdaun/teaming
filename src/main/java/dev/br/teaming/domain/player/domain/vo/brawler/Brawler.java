@@ -36,8 +36,8 @@ public class Brawler {
 
     public Brawler(Integer brawlerId, String brawlerName, Integer brawlerPower, Integer brawlerRank, Integer brawlerTrophy, Integer brawlerHighestTrophy,
                    Gears gears, StarPowers starPowers, Gadgets gadgets) {
-        if( Objects.isNull(brawlerId) || brawlerId < 0 || Strings.isBlank(brawlerName) || Objects.isNull(brawlerPower) || brawlerPower < 0 ||
-            Objects.isNull(brawlerRank) || brawlerRank < 0 || Objects.isNull(brawlerTrophy) || brawlerTrophy < 0||Objects.isNull(brawlerHighestTrophy) || brawlerHighestTrophy < 0 ||
+        if( Objects.isNull(brawlerId) || brawlerId <= 0 || Strings.isBlank(brawlerName) || Objects.isNull(brawlerPower) || brawlerPower <= 0 ||
+            Objects.isNull(brawlerRank) || brawlerRank <= 0 || Objects.isNull(brawlerTrophy) || brawlerTrophy <= 0||Objects.isNull(brawlerHighestTrophy) || brawlerHighestTrophy <= 0 ||
             Objects.isNull(gears) || Objects.isNull(starPowers) || Objects.isNull(gadgets)) {
             throw new IllegalArgumentException();
         }
