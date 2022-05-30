@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -38,6 +39,20 @@ public class Player {
 
     @Embedded
     private Brawlers brawler;
+
+    public Player(PlayerName playerName, PlayerTag playerTag, PlayerTrophy playerTrophy, PlayerExp playerExp, Victory victory, Club club, Brawlers brawler) {
+        if(Objects.isNull(playerName) || Objects.isNull(playerTag) || Objects.isNull(playerTrophy) ||
+           Objects.isNull(playerExp) || Objects.isNull(victory) || Objects.isNull(club) || Objects.isNull(brawler)) {
+            throw new IllegalArgumentException();
+        }
+        this.playerName = playerName;
+        this.playerTag = playerTag;
+        this.playerTrophy = playerTrophy;
+        this.playerExp = playerExp;
+        this.victory = victory;
+        this.club = club;
+        this.brawler = brawler;
+    }
 
     @Override
     public boolean equals(Object o) {
