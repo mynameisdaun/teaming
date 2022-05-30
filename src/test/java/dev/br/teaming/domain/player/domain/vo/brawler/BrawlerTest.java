@@ -45,7 +45,7 @@ class BrawlerTest {
         final Brawler brawler = new Brawler(brawlerId, brawlerName, power, rank, trophies, highestTrophies, gears, starPowers, gadgets);
         //then
         assertThat(brawler).isNotNull();
-        assertThat(brawler.getBrawlerId()).isEqualTo(16000045);
+        assertThat(brawler.getBrawlerId()).isEqualTo(new BrawlerId(16000045));
         assertThat(brawler.getBrawlerName()).isEqualTo("STU");
         assertThat(brawler.getBrawlerPower()).isEqualTo(10);
         assertThat(brawler.getBrawlerRank()).isEqualTo(21);
@@ -60,7 +60,6 @@ class BrawlerTest {
     }
 
     @DisplayName(value = "브롤러 아이디가 올바르지 않으면 브롤러를 생성할 수 없다")
-    @ValueSource(ints = {-1, 0})
     @NullSource
     @ParameterizedTest
     void create_fail_wrong_brawler_id(final BrawlerId brawlerId) throws Exception {
