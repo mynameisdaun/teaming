@@ -3,12 +3,15 @@ package dev.br.teaming.domain.video.repository;
 import dev.br.teaming.domain.fixture.Fixture;
 import dev.br.teaming.domain.video.domain.Video;
 import dev.br.teaming.domain.video.domain.vo.VideoId;
+import dev.br.teaming.domain.video.domain.vo.Youtuber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import javax.persistence.EntityManager;
+import java.util.Arrays;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -72,5 +75,30 @@ class VideoRepositoryTest {
         //when&&then
         assertThatThrownBy(() -> videoRepository.findByVideoId(new VideoId("no-exist-Id")).orElseThrow(NoSuchElementException::new))
                 .isInstanceOf(NoSuchElementException.class);
+    }
+
+    @DisplayName(value = "Youtuber 리스트로 비디오를 조회한다")
+    @Test
+    void findByYoutuberIn() throws Exception {
+        //given
+        Youtuber youtuber = new Youtuber("UCoH2pCzAr6zWDG-LtUiLWRw", "stew");
+        final Video video = Fixture.video(youtuber);
+        final Video video2 = Fixture.video(youtuber);
+        em.persist(video);
+        em.persist(video2);
+        em.flush();
+        //when
+        final List<Video> findVideos = videoRepository.findByYoutuberIn(Arrays.asList(youtuber));
+        //then
+        assertThat(findVideos).isNotNull();
+        assertThat(findVideos.isEmpty()).isFalse();
+        assertThat(findVideos.size()).isEqualTo(2);
+        assertThat(findVideos.get(0).getVideoSeq()).isEqualTo(video.getVideoSeq());
+        assertThat(findVideos.get(0).getVideoId()).isEqualTo(video.getVideoId());
+        assertThat(findVideos.get(0).getVideoTitle()).isEqualTo(video.getVideoTitle());
+        assertThat(findVideos.get(0).getDescription()).isEqualTo(video.getDescription());
+        assertThat(findVideos.get(0).getPublishedAt()).isEqualTo(video.getPublishedAt());
+        assertThat(findVideos.get(0).getThumbnails()).isEqualTo(video.getThumbnails());
+        assertThat(findVideos.get(0).getYoutuber()).isEqualTo(video.getYoutuber());
     }
 }
