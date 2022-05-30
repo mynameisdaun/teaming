@@ -16,6 +16,7 @@ public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "player_seq")
     private long playerSeq;
 
     @Embedded
