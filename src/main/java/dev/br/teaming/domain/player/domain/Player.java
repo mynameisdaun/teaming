@@ -1,14 +1,16 @@
 package dev.br.teaming.domain.player.domain;
 
-import dev.br.teaming.domain.player.domain.vo.PlayerName;
-import dev.br.teaming.domain.player.domain.vo.PlayerTag;
-import dev.br.teaming.domain.player.domain.vo.Trophy;
+import dev.br.teaming.domain.player.domain.vo.*;
+import dev.br.teaming.domain.player.domain.vo.brawler.Brawlers;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity
 public class Player {
 
     @Id
@@ -23,6 +25,32 @@ public class Player {
     private PlayerTag playerTag;
 
     @Embedded
-    private Trophy trophy;
+    private PlayerTrophy playerTrophy;
 
+    @Embedded
+    private PlayerExp playerExp;
+
+    @Embedded
+    private Victory victory;
+
+    @Embedded
+    private Club club;
+
+    @Embedded
+    private Brawlers brawler;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Player player = (Player) o;
+
+        return userSeq == player.userSeq;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (userSeq ^ (userSeq >>> 32));
+    }
 }
