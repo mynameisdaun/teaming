@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import javax.persistence.EntityManager;
-
 import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,7 +21,7 @@ class VideoRepositoryTest {
     EntityManager em;
     @Autowired
     VideoRepository videoRepository;
-    
+
     @DisplayName("Video를 저장한다")
     @Test
     public void save() {
@@ -43,7 +42,7 @@ class VideoRepositoryTest {
         assertThat(saved.getYoutuber()).isEqualTo(video.getYoutuber());
 
     }
-    
+
     @DisplayName(value = "VideoID로 비디오를 조회한다")
     @Test
     void findByVideoId() throws Exception {
@@ -71,7 +70,7 @@ class VideoRepositoryTest {
         final Video video = Fixture.video();
         em.persist(video);
         //when&&then
-        assertThatThrownBy(()-> videoRepository.findByVideoId(new VideoId("no-exist-Id")).orElseThrow(NoSuchElementException::new))
+        assertThatThrownBy(() -> videoRepository.findByVideoId(new VideoId("no-exist-Id")).orElseThrow(NoSuchElementException::new))
                 .isInstanceOf(NoSuchElementException.class);
     }
 }
