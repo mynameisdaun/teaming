@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @Slf4j
@@ -22,7 +24,11 @@ public class VideoService {
     private final PlayerRepository playerRepository;
 
     public List<VideoDTO> findAllByPlayerTag(PlayerTag playerTag) {
-        //Player player = playerRepository.findByPlayerTag(playerTag);
-        return null;
+        Player player = playerRepository.findByPlayerTag(playerTag)
+                .orElseThrow(NoSuchElementException::new);
+        return videoRepository.findByYoutuberIn(player.getYoutubers().getYoutubers())
+                .stream()
+                .map(VideoDTO::new)
+                .collect(Collectors.toList());
     }
 }
