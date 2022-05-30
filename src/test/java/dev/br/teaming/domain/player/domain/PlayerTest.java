@@ -132,4 +132,13 @@ class PlayerTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
+
+    @DisplayName(value = "플레이어 유튜버정보가 없으면 플레이어를 생성할 수 없다")
+    @NullSource
+    @ParameterizedTest
+    void create_fail_wrong_youtubers(final Youtubers youtubers) throws Exception {
+        //given&when&then
+        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers, youtubers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

@@ -47,7 +47,7 @@ public class Player {
 
     public Player(PlayerName playerName, PlayerTag playerTag, PlayerTrophy playerTrophy, PlayerExp playerExp, Victory victory, Club club, Brawlers brawlers, Youtubers youtubers) {
         if (Objects.isNull(playerName) || Objects.isNull(playerTag) || Objects.isNull(playerTrophy) ||
-                Objects.isNull(playerExp) || Objects.isNull(victory) || Objects.isNull(club) || Objects.isNull(brawlers) || Objects.isNull(brawlers)) {
+                Objects.isNull(playerExp) || Objects.isNull(victory) || Objects.isNull(club) || Objects.isNull(brawlers) || Objects.isNull(youtubers)) {
             throw new IllegalArgumentException();
         }
         this.playerName = playerName;
