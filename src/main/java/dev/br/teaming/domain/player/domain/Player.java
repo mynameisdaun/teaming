@@ -16,7 +16,7 @@ public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long userSeq;
+    private long playerSeq;
 
     @Embedded
     private PlayerName playerName;
@@ -38,11 +38,11 @@ public class Player {
     private Club club;
 
     @Embedded
-    private Brawlers brawler;
+    private Brawlers brawlers;
 
-    public Player(PlayerName playerName, PlayerTag playerTag, PlayerTrophy playerTrophy, PlayerExp playerExp, Victory victory, Club club, Brawlers brawler) {
+    public Player(PlayerName playerName, PlayerTag playerTag, PlayerTrophy playerTrophy, PlayerExp playerExp, Victory victory, Club club, Brawlers brawlers) {
         if(Objects.isNull(playerName) || Objects.isNull(playerTag) || Objects.isNull(playerTrophy) ||
-           Objects.isNull(playerExp) || Objects.isNull(victory) || Objects.isNull(club) || Objects.isNull(brawler)) {
+           Objects.isNull(playerExp) || Objects.isNull(victory) || Objects.isNull(club) || Objects.isNull(brawlers)) {
             throw new IllegalArgumentException();
         }
         this.playerName = playerName;
@@ -51,7 +51,7 @@ public class Player {
         this.playerExp = playerExp;
         this.victory = victory;
         this.club = club;
-        this.brawler = brawler;
+        this.brawlers = brawlers;
     }
 
     @Override
@@ -61,11 +61,11 @@ public class Player {
 
         Player player = (Player) o;
 
-        return userSeq == player.userSeq;
+        return playerSeq == player.playerSeq;
     }
 
     @Override
     public int hashCode() {
-        return (int) (userSeq ^ (userSeq >>> 32));
+        return (int) (playerSeq ^ (playerSeq >>> 32));
     }
 }
