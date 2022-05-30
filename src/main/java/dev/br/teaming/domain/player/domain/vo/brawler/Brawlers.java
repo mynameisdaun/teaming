@@ -4,8 +4,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +13,8 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Brawlers {
 
-    @ElementCollection
+    @OneToMany
+    @CollectionTable(name = "brawler", joinColumns = @JoinColumn(name = "player_seq"))
     private List<Brawler> brawlers;
 
     public Brawlers(List<Brawler> brawlers) {
