@@ -36,6 +36,10 @@ public class Fixture {
         return new Thumbnail(ThumbnailType.DEFAULT, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120.0, 90.0);
     }
 
+    public static Youtuber youtuber() {
+        return new Youtuber("UCoH2pCzAr6zWDG-LtUiLWRw", "다우니");
+    }
+
     public static Gadget gadget() {
         return new Gadget(23000433, "FREEZE FRAME");
     }
