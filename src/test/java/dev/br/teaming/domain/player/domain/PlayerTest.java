@@ -53,8 +53,8 @@ class PlayerTest {
         assertThat(player.getVictory().getTrio()).isEqualTo(2105);
         assertThat(player.getClub().getClubTag()).isEqualTo("#LGPVQV");
         assertThat(player.getClub().getClubName()).isEqualTo("다운스");
-        assertThat(player.getBrawler()).isNotNull();
-        assertThat(player.getBrawler().isEmpty()).isFalse();
+        assertThat(player.getBrawlers()).isNotNull();
+        assertThat(player.getBrawlers().isEmpty()).isFalse();
     }
     
     @DisplayName(value = "플레이어 네임이 없으면 플레이어를 생성할 수 없다")
