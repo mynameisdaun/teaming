@@ -22,7 +22,7 @@ class YoutuberTest {
         //then
         assertThat(youtuber).isNotNull();
         assertThat(youtuber.getYoutuberId()).isEqualTo("UCoH2pCzAr6zWDG-LtUiLWRw");
-        assertThat(youtuber.getName().getValue()).isEqualTo("브롤");
+        assertThat(youtuber.getName()).isEqualTo("브롤");
     }
 
     @DisplayName(value = "유튜버 ID는 빈 값이 될 수 없다")

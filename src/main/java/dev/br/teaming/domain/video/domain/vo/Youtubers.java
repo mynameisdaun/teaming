@@ -20,7 +20,7 @@ public class Youtubers {
     private List<Youtuber> youtubers;
 
     public Youtubers(List<Youtuber> youtubers) {
-        if(Objects.isNull(youtubers)||youtubers.isEmpty()) {
+        if (Objects.isNull(youtubers) || youtubers.isEmpty()) {
             throw new IllegalArgumentException();
         }
         this.youtubers = youtubers;

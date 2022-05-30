@@ -13,17 +13,17 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Victory {
 
-    @Column(name="victory_solo")
+    @Column(name = "victory_solo")
     private int solo;
 
-    @Column(name="victory_duo")
+    @Column(name = "victory_duo")
     private int duo;
 
-    @Column(name="victory_trio")
+    @Column(name = "victory_trio")
     private int trio;
 
     public Victory(int solo, int duo, int trio) {
-        if(Objects.isNull(solo) || Objects.isNull(duo) || Objects.isNull(trio) || solo < 0 || duo < 0 || trio < 0) {
+        if (Objects.isNull(solo) || Objects.isNull(duo) || Objects.isNull(trio) || solo < 0 || duo < 0 || trio < 0) {
             throw new IllegalArgumentException();
         }
         this.solo = solo;

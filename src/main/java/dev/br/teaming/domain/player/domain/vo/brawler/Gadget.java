@@ -21,7 +21,7 @@ public class Gadget {
     private String gadgetName;
 
     public Gadget(Integer gadgetId, String gadgetName) {
-        if(Objects.isNull(gadgetId) || gadgetId <= 0 || Strings.isBlank(gadgetName)) {
+        if (Objects.isNull(gadgetId) || gadgetId <= 0 || Strings.isBlank(gadgetName)) {
             throw new IllegalArgumentException();
         }
         this.gadgetId = gadgetId;

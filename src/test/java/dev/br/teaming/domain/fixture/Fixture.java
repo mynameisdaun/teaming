@@ -19,7 +19,8 @@ public class Fixture {
         Victory victory = new Victory(310, 228, 2105);
         Club club = new Club("#LGPVQV", "다운스");
         Brawlers brawlers = new Brawlers(Arrays.asList(brawler()));
-        return new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers);
+        Youtubers youtubers = new Youtubers(Arrays.asList(youtuber()));
+        return new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers, youtubers);
     }
 
     public static Video video() {
@@ -29,7 +30,7 @@ public class Fixture {
         Date publishedAt = new Date();
         Youtuber youtuber = new Youtuber("UCoH2pCzAr6zWDG-LtUiLWRw", "stew");
         Thumbnails thumbnails = new Thumbnails(Arrays.asList(Fixture.thumbnail()));
-        return  new Video(videoId, title, description, publishedAt, youtuber, thumbnails);
+        return new Video(videoId, title, description, publishedAt, youtuber, thumbnails);
     }
 
     public static Thumbnail thumbnail() {

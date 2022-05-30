@@ -33,7 +33,7 @@ class PlayerTrophyTest {
         assertThat(playerTrophy.getCurrentTrophy()).isEqualTo(10);
         assertThat(playerTrophy.getHighestTrophy()).isEqualTo(100);
     }
-    
+
     @DisplayName(value = "트로피의 각 개수는 0이상이어야 한다")
     @MethodSource("wrong_trophies_list")
     @ParameterizedTest

@@ -7,7 +7,6 @@ import org.apache.logging.log4j.util.Strings;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.util.Objects;
 
 @Embeddable
 @Getter
@@ -21,7 +20,7 @@ public class Club {
     private String clubName;
 
     public Club(String clubTag, String clubName) {
-        if(Strings.isBlank(clubTag) || Strings.isBlank(clubName) || !clubTag.startsWith("#")) {
+        if (Strings.isBlank(clubTag) || Strings.isBlank(clubName) || !clubTag.startsWith("#")) {
             throw new IllegalArgumentException();
         }
         this.clubTag = clubTag;

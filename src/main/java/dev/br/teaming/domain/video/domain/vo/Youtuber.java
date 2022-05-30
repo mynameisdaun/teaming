@@ -1,6 +1,5 @@
 package dev.br.teaming.domain.video.domain.vo;
 
-import dev.br.teaming.domain.model.vo.Name;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,13 +19,13 @@ public class Youtuber {
     private String youtuberId;
 
     @Column(name = "youtuber_name")
-    private Name name;
+    private String name;
 
     public Youtuber(String youtuberId, String name) {
-        if (!Strings.isNotBlank(youtuberId)) {
+        if (!Strings.isNotBlank(youtuberId) || !Strings.isNotBlank(name)) {
             throw new IllegalArgumentException();
         }
         this.youtuberId = youtuberId;
-        this.name = new Name(name);
+        this.name = name;
     }
 }

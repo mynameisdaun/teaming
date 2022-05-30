@@ -21,7 +21,7 @@ public class StarPower {
     private String starPowerName;
 
     public StarPower(Integer starPowerId, String starPowerName) {
-        if(Objects.isNull(starPowerId) || starPowerId <= 0 || Strings.isBlank(starPowerName)) {
+        if (Objects.isNull(starPowerId) || starPowerId <= 0 || Strings.isBlank(starPowerName)) {
             throw new IllegalArgumentException();
         }
         this.starPowerId = starPowerId;

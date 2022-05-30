@@ -2,6 +2,7 @@ package dev.br.teaming.domain.player.domain;
 
 import dev.br.teaming.domain.player.domain.vo.*;
 import dev.br.teaming.domain.player.domain.vo.brawler.Brawlers;
+import dev.br.teaming.domain.video.domain.vo.Youtubers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import org.junit.jupiter.params.provider.NullSource;
 import java.util.Arrays;
 
 import static dev.br.teaming.domain.fixture.Fixture.brawler;
+import static dev.br.teaming.domain.fixture.Fixture.youtuber;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -23,6 +25,7 @@ class PlayerTest {
     private Victory victory;
     private Club club;
     private Brawlers brawlers;
+    private Youtubers youtubers;
 
     @BeforeEach
     void init() {
@@ -33,13 +36,14 @@ class PlayerTest {
         victory = new Victory(310, 228, 2105);
         club = new Club("#LGPVQV", "다운스");
         brawlers = new Brawlers(Arrays.asList(brawler()));
+        youtubers = new Youtubers(Arrays.asList(youtuber()));
     }
 
     @DisplayName(value = "플레이어를 생성한다")
     @Test
     void create() throws Exception {
         //given//when
-        Player player = new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers);
+        Player player = new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers, youtubers);
         //then
         assertThat(player).isNotNull();
         assertThat(player.getPlayerName().getName()).isEqualTo("쵝오다운");
@@ -55,16 +59,18 @@ class PlayerTest {
         assertThat(player.getClub().getClubName()).isEqualTo("다운스");
         assertThat(player.getBrawlers()).isNotNull();
         assertThat(player.getBrawlers().isEmpty()).isFalse();
+        assertThat(player.getYoutubers()).isNotNull();
+        assertThat(player.getYoutubers().isEmpty()).isFalse();
     }
-    
+
     @DisplayName(value = "플레이어 네임이 없으면 플레이어를 생성할 수 없다")
     @NullSource
     @ParameterizedTest
     void create_fail_wrong_player_name(final PlayerName playerName) throws Exception {
         //given&when&then
-        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers))
+        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers, youtubers))
                 .isInstanceOf(IllegalArgumentException.class);
-        
+
     }
 
     @DisplayName(value = "플레이어 태그가 없으면 플레이어를 생성할 수 없다")
@@ -72,7 +78,7 @@ class PlayerTest {
     @ParameterizedTest
     void create_fail_wrong_player_tag(final PlayerTag playerTag) throws Exception {
         //given&when&then
-        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers))
+        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers, youtubers))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
@@ -82,7 +88,7 @@ class PlayerTest {
     @ParameterizedTest
     void create_fail_wrong_player_trophy(final PlayerTrophy playerTrophy) throws Exception {
         //given&when&then
-        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers))
+        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers, youtubers))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
@@ -92,7 +98,7 @@ class PlayerTest {
     @ParameterizedTest
     void create_fail_wrong_player_exp(final PlayerExp playerExp) throws Exception {
         //given&when&then
-        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers))
+        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers, youtubers))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
@@ -102,7 +108,7 @@ class PlayerTest {
     @ParameterizedTest
     void create_fail_wrong_player_victory(final Victory victory) throws Exception {
         //given&when&then
-        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers))
+        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers, youtubers))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
@@ -112,7 +118,7 @@ class PlayerTest {
     @ParameterizedTest
     void create_fail_wrong_player_club(final Club club) throws Exception {
         //given&when&then
-        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers))
+        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers, youtubers))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
@@ -122,7 +128,7 @@ class PlayerTest {
     @ParameterizedTest
     void create_fail_wrong_player_brawlers(final Brawlers brawlers) throws Exception {
         //given&when&then
-        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers))
+        assertThatThrownBy(() -> new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers, youtubers))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }

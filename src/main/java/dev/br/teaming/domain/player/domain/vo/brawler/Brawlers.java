@@ -4,7 +4,10 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.CollectionTable;
+import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +21,7 @@ public class Brawlers {
     private List<Brawler> brawlers;
 
     public Brawlers(List<Brawler> brawlers) {
-        if(Objects.isNull(brawlers)||brawlers.isEmpty()) {
+        if (Objects.isNull(brawlers) || brawlers.isEmpty()) {
             throw new IllegalArgumentException();
         }
         this.brawlers = brawlers;

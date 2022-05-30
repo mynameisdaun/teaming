@@ -13,14 +13,14 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PlayerExp {
 
-    @Column(name="exp_level")
+    @Column(name = "exp_level")
     private int expLevel;
 
-    @Column(name="exp_points")
+    @Column(name = "exp_points")
     private int expPoints;
 
     public PlayerExp(int expLevel, int expPoints) {
-        if(Objects.isNull(expLevel) || Objects.isNull(expPoints) || expLevel < 0  || expPoints < 0) {
+        if (Objects.isNull(expLevel) || Objects.isNull(expPoints) || expLevel < 0 || expPoints < 0) {
             throw new IllegalArgumentException();
         }
         this.expLevel = expLevel;

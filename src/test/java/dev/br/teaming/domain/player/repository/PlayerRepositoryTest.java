@@ -2,15 +2,12 @@ package dev.br.teaming.domain.player.repository;
 
 import dev.br.teaming.domain.fixture.Fixture;
 import dev.br.teaming.domain.player.domain.Player;
-import dev.br.teaming.domain.video.domain.Video;
-import dev.br.teaming.domain.video.domain.vo.VideoId;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import javax.persistence.EntityManager;
-
 import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -72,7 +69,7 @@ class PlayerRepositoryTest {
         final Player player = Fixture.player();
         em.persist(player);
         //when&&then
-        assertThatThrownBy(()-> playerRepository.findById(200L).orElseThrow(NoSuchElementException::new))
+        assertThatThrownBy(() -> playerRepository.findById(200L).orElseThrow(NoSuchElementException::new))
                 .isInstanceOf(NoSuchElementException.class);
     }
 }

@@ -22,7 +22,7 @@ public class Gear {
     private GearType gearType;
 
     public Gear(Integer gearId, Integer gearLevel, GearType gearType) {
-        if( Objects.isNull(gearId) || Objects.isNull(gearLevel) || gearLevel <=0 || gearId <=0 || Objects.isNull(gearType) ) {
+        if (Objects.isNull(gearId) || Objects.isNull(gearLevel) || gearLevel <= 0 || gearId <= 0 || Objects.isNull(gearType)) {
             throw new IllegalArgumentException();
         }
         this.gearId = gearId;

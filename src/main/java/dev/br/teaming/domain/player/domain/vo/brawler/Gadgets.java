@@ -20,7 +20,7 @@ public class Gadgets {
     private List<Gadget> gadgets;
 
     public Gadgets(List<Gadget> gadgets) {
-        if(Objects.isNull(gadgets)) {
+        if (Objects.isNull(gadgets)) {
             throw new IllegalArgumentException();
         }
         this.gadgets = gadgets;

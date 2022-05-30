@@ -21,7 +21,7 @@ public class PlayerName {
     private String color;
 
     public PlayerName(String name, String color) {
-        if (!Strings.isNotBlank(name)||!Strings.isNotBlank(color)||color.length()!=10) {
+        if (!Strings.isNotBlank(name) || !Strings.isNotBlank(color) || color.length() != 10) {
             throw new IllegalArgumentException();
         }
         this.name = name;

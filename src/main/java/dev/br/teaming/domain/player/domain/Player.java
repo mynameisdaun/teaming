@@ -2,6 +2,7 @@ package dev.br.teaming.domain.player.domain;
 
 import dev.br.teaming.domain.player.domain.vo.*;
 import dev.br.teaming.domain.player.domain.vo.brawler.Brawlers;
+import dev.br.teaming.domain.video.domain.vo.Youtubers;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,11 +40,14 @@ public class Player {
     private Club club;
 
     @Embedded
+    private Youtubers youtubers;
+
+    @Embedded
     private Brawlers brawlers;
 
-    public Player(PlayerName playerName, PlayerTag playerTag, PlayerTrophy playerTrophy, PlayerExp playerExp, Victory victory, Club club, Brawlers brawlers) {
-        if(Objects.isNull(playerName) || Objects.isNull(playerTag) || Objects.isNull(playerTrophy) ||
-           Objects.isNull(playerExp) || Objects.isNull(victory) || Objects.isNull(club) || Objects.isNull(brawlers)) {
+    public Player(PlayerName playerName, PlayerTag playerTag, PlayerTrophy playerTrophy, PlayerExp playerExp, Victory victory, Club club, Brawlers brawlers, Youtubers youtubers) {
+        if (Objects.isNull(playerName) || Objects.isNull(playerTag) || Objects.isNull(playerTrophy) ||
+                Objects.isNull(playerExp) || Objects.isNull(victory) || Objects.isNull(club) || Objects.isNull(brawlers) || Objects.isNull(brawlers)) {
             throw new IllegalArgumentException();
         }
         this.playerName = playerName;
@@ -53,6 +57,7 @@ public class Player {
         this.victory = victory;
         this.club = club;
         this.brawlers = brawlers;
+        this.youtubers = youtubers;
     }
 
     @Override

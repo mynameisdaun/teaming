@@ -15,14 +15,14 @@ import java.util.Objects;
 @EqualsAndHashCode
 public class PlayerTrophy {
 
-    @Column(name="trophy_current")
+    @Column(name = "trophy_current")
     private int currentTrophy;
 
-    @Column(name="trophy_highest")
+    @Column(name = "trophy_highest")
     private int highestTrophy;
 
     public PlayerTrophy(int currentTrophy, int highestTrophy) {
-        if(Objects.isNull(currentTrophy) || Objects.isNull(highestTrophy) || currentTrophy < 0  || highestTrophy < 0 || currentTrophy > highestTrophy) {
+        if (Objects.isNull(currentTrophy) || Objects.isNull(highestTrophy) || currentTrophy < 0 || highestTrophy < 0 || currentTrophy > highestTrophy) {
             throw new IllegalArgumentException();
         }
         this.currentTrophy = currentTrophy;

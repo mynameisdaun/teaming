@@ -20,7 +20,7 @@ public class StarPowers {
     private List<StarPower> starPowers;
 
     public StarPowers(List<StarPower> starPowers) {
-        if(Objects.isNull(starPowers)) {
+        if (Objects.isNull(starPowers)) {
             throw new IllegalArgumentException();
         }
         this.starPowers = starPowers;

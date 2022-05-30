@@ -15,7 +15,7 @@ class GadgetTest {
     @Test
     void create() throws Exception {
         //given
-        final int    gadgetId = 23000362;
+        final int gadgetId = 23000362;
         final String gadgetName = "BREAKTHROUGH";
         //when
         final Gadget gadget = new Gadget(gadgetId, gadgetName);

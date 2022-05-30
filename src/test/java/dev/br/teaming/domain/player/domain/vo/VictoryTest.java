@@ -26,7 +26,7 @@ class VictoryTest {
     void create() throws Exception {
         //given
         final int solo = 10;
-        final int duo  = 10;
+        final int duo = 10;
         final int trio = 10;
         //when
         final Victory victory = new Victory(solo, duo, trio);
@@ -38,7 +38,7 @@ class VictoryTest {
     }
 
     @DisplayName(value = "승리 정보의 각 승리 수는 이상이어야 한다")
-    @MethodSource("wrong_victory    _list")
+    @MethodSource("wrong_victory_list")
     @ParameterizedTest
     void create_fail_wrong_victory(final int solo, final int duo, final int trio) throws Exception {
         //given&&when&&then

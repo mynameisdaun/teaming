@@ -20,7 +20,7 @@ public class Gears {
     private List<Gear> gears;
 
     public Gears(List<Gear> gears) {
-        if(Objects.isNull(gears)) {
+        if (Objects.isNull(gears)) {
             throw new IllegalArgumentException();
         }
         this.gears = gears;
