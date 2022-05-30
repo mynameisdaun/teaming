@@ -2,10 +2,12 @@ package dev.br.teaming.domain.player.repository;
 
 import dev.br.teaming.domain.fixture.Fixture;
 import dev.br.teaming.domain.player.domain.Player;
+import dev.br.teaming.domain.player.domain.vo.PlayerTag;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.NoSuchElementException;
@@ -14,6 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DataJpaTest
+@Transactional
 class PlayerRepositoryTest {
 
     @Autowired
@@ -29,6 +32,7 @@ class PlayerRepositoryTest {
         final Player player = Fixture.player();
         //when
         final Player saved = playerRepository.save(player);
+        em.flush();
         //then
         assertThat(saved).isNotNull();
         assertThat(saved.getPlayerSeq()).isEqualTo(player.getPlayerSeq());
@@ -47,6 +51,7 @@ class PlayerRepositoryTest {
         //given
         final Player player = Fixture.player();
         em.persist(player);
+        em.flush();
         //when
         final Player findPlayer = playerRepository.findById(player.getPlayerSeq())
                 .orElseThrow(NoSuchElementException::new);
@@ -68,8 +73,40 @@ class PlayerRepositoryTest {
         //given
         final Player player = Fixture.player();
         em.persist(player);
+        em.flush();
         //when&&then
         assertThatThrownBy(() -> playerRepository.findById(200L).orElseThrow(NoSuchElementException::new))
+                .isInstanceOf(NoSuchElementException.class);
+    }
+
+    @DisplayName(value = "PlayerTag로 플레이어를 조회한다")
+    @Test
+    void findByPlayerTag() throws Exception {
+        //given
+        final Player player = Fixture.player();
+        em.persist(player);
+        em.flush();
+        //when
+        final Player findPlayer = playerRepository.findByPlayerTag(player.getPlayerTag())
+                .orElseThrow(NoSuchElementException::new);
+        //then
+        assertThat(findPlayer).isNotNull();
+        assertThat(findPlayer.getPlayerSeq()).isEqualTo(player.getPlayerSeq());
+        assertThat(findPlayer.getPlayerName()).isEqualTo(player.getPlayerName());
+        assertThat(findPlayer.getPlayerTag()).isEqualTo(player.getPlayerTag());
+        assertThat(findPlayer.getPlayerTrophy()).isEqualTo(player.getPlayerTrophy());
+        assertThat(findPlayer.getPlayerExp()).isEqualTo(player.getPlayerExp());
+        assertThat(findPlayer.getVictory()).isEqualTo(player.getVictory());
+        assertThat(findPlayer.getClub()).isEqualTo(player.getClub());
+        assertThat(findPlayer.getBrawlers()).isEqualTo(player.getBrawlers());
+    }
+
+    @DisplayName(value = "존재하지 않는 PlayerTag로 플레이어를 조회할 수 없다")
+    @Test
+    void findByPlayer_fail_non_exist_player_tag() throws Exception {
+        //given
+        //when&&then
+        assertThatThrownBy(() -> playerRepository.findByPlayerTag(new PlayerTag("#IJFf3fd")).orElseThrow(NoSuchElementException::new))
                 .isInstanceOf(NoSuchElementException.class);
     }
 }
