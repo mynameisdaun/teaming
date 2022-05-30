@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -17,8 +14,11 @@ import java.util.Objects;
 public class Brawler {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long brawlerSeq;
+    @Embedded
     @Column(name = "brawler_id")
-    private Integer brawlerId;
+    private BrawlerId brawlerId;
     @Column(name = "brawler_name")
     private String brawlerName;
     @Column(name = "brawler_power")
@@ -36,9 +36,9 @@ public class Brawler {
     @Embedded
     private Gadgets gadgets;
 
-    public Brawler(Integer brawlerId, String brawlerName, Integer brawlerPower, Integer brawlerRank, Integer brawlerTrophy, Integer brawlerHighestTrophy,
+    public Brawler(BrawlerId brawlerId, String brawlerName, Integer brawlerPower, Integer brawlerRank, Integer brawlerTrophy, Integer brawlerHighestTrophy,
                    Gears gears, StarPowers starPowers, Gadgets gadgets) {
-        if (Objects.isNull(brawlerId) || brawlerId <= 0 || Strings.isBlank(brawlerName) || Objects.isNull(brawlerPower) || brawlerPower <= 0 ||
+        if (Objects.isNull(brawlerId) || Strings.isBlank(brawlerName) || Objects.isNull(brawlerPower) || brawlerPower <= 0 ||
                 Objects.isNull(brawlerRank) || brawlerRank <= 0 || Objects.isNull(brawlerTrophy) || brawlerTrophy <= 0 || Objects.isNull(brawlerHighestTrophy) || brawlerHighestTrophy <= 0 ||
                 Objects.isNull(gears) || Objects.isNull(starPowers) || Objects.isNull(gadgets)) {
             throw new IllegalArgumentException();
@@ -61,11 +61,11 @@ public class Brawler {
 
         Brawler brawler = (Brawler) o;
 
-        return brawlerId == brawler.brawlerId;
+        return brawlerId != null ? brawlerId.equals(brawler.brawlerId) : brawler.brawlerId == null;
     }
 
     @Override
     public int hashCode() {
-        return brawlerId;
+        return brawlerId != null ? brawlerId.hashCode() : 0;
     }
 }

@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BrawlerTest {
-    private Integer brawlerId;
+    private BrawlerId brawlerId;
     private String brawlerName;
     private Integer power;
     private Integer rank;
@@ -27,7 +27,7 @@ class BrawlerTest {
     @BeforeEach
     public void init() {
         //given
-        brawlerId = 16000045;
+        brawlerId = new BrawlerId(16000045);
         brawlerName = "STU";
         power = 10;
         rank = 21;
@@ -63,7 +63,7 @@ class BrawlerTest {
     @ValueSource(ints = {-1, 0})
     @NullSource
     @ParameterizedTest
-    void create_fail_wrong_brawler_id(final Integer brawlerId) throws Exception {
+    void create_fail_wrong_brawler_id(final BrawlerId brawlerId) throws Exception {
         //given&when&then
         assertThatThrownBy(() -> new Brawler(brawlerId, brawlerName, power, rank, trophies, highestTrophies, gears, starPowers, gadgets))
                 .isInstanceOf(IllegalArgumentException.class);

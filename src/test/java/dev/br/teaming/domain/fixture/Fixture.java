@@ -54,7 +54,7 @@ public class Fixture {
     }
 
     public static Brawler brawler() {
-        Integer brawlerId = 16000045;
+        BrawlerId brawlerId = new BrawlerId(16000045);
         String brawlerName = "STU";
         Integer power = 10;
         Integer rank = 21;
