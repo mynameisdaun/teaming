@@ -1,6 +1,5 @@
 package dev.br.teaming.domain.video.domain;
 
-import dev.br.teaming.domain.model.vo.Name;
 import dev.br.teaming.domain.video.domain.vo.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -43,8 +42,8 @@ public class Video {
     private Thumbnails thumbnails;
 
     public Video(VideoId videoId, VideoTitle title, Description description, Date publishedAt, Youtuber youtuber, Thumbnails thumbnails) {
-        if(Objects.isNull(videoId) || Objects.isNull(title) || Objects.isNull(description) ||
-           Objects.isNull(publishedAt) || Objects.isNull(youtuber) || Objects.isNull(thumbnails)) {
+        if (Objects.isNull(videoId) || Objects.isNull(title) || Objects.isNull(description) ||
+                Objects.isNull(publishedAt) || Objects.isNull(youtuber) || Objects.isNull(thumbnails)) {
             throw new IllegalArgumentException();
         }
         this.videoId = videoId;
