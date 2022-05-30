@@ -18,7 +18,7 @@ public class Thumbnail {
     private Double width;
     private Double height;
 
-    public Thumbnail(ThumbnailType type, String url, Double width, Double height) {
+    public Thumbnail(final ThumbnailType type, final String url, final Double width, final Double height) {
         if (Objects.isNull(type) || Strings.isBlank(url) || width == null || width <= 0 || height == null || height <= 0) {
             throw new IllegalArgumentException();
         }
