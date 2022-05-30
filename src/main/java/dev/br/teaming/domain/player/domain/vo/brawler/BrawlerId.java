@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
-import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
 @EqualsAndHashCode
@@ -16,6 +16,9 @@ public class BrawlerId {
     private Integer brawlerId;
 
     public BrawlerId(Integer brawlerId) {
+        if(Objects.isNull(brawlerId)||brawlerId <=0) {
+            throw new IllegalArgumentException();
+        }
         this.brawlerId = brawlerId;
     }
 }
