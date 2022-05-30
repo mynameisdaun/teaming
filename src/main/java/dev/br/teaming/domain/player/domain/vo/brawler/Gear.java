@@ -1,6 +1,7 @@
 package dev.br.teaming.domain.player.domain.vo.brawler;
 
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.Objects;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Embeddable
+@EqualsAndHashCode
 public class Gear {
     @Column(name = "gear_id")
     private Integer gearId;
