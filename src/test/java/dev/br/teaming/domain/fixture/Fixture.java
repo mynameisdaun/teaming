@@ -1,5 +1,7 @@
 package dev.br.teaming.domain.fixture;
 
+import dev.br.teaming.domain.player.domain.Player;
+import dev.br.teaming.domain.player.domain.vo.*;
 import dev.br.teaming.domain.player.domain.vo.brawler.*;
 import dev.br.teaming.domain.video.domain.Video;
 import dev.br.teaming.domain.video.domain.vo.*;
@@ -8,6 +10,17 @@ import java.util.Arrays;
 import java.util.Date;
 
 public class Fixture {
+
+    public static Player player() {
+        PlayerName playerName = new PlayerName("쵝오다운", "0xffffffff");
+        PlayerTag playerTag = new PlayerTag("#YLUPG8PJP");
+        PlayerTrophy playerTrophy = new PlayerTrophy(16860, 16860);
+        PlayerExp playerExp = new PlayerExp(88, 41031);
+        Victory victory = new Victory(310, 228, 2105);
+        Club club = new Club("#LGPVQV", "다운스");
+        Brawlers brawlers = new Brawlers(Arrays.asList(brawler()));
+        return new Player(playerName, playerTag, playerTrophy, playerExp, victory, club, brawlers);
+    }
 
     public static Video video() {
         VideoId videoId = new VideoId("jYMrymKeJY0");
