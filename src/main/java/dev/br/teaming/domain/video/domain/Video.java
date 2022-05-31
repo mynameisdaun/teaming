@@ -1,8 +1,6 @@
 package dev.br.teaming.domain.video.domain;
 
-import com.google.api.services.youtube.model.ResourceId;
 import com.google.api.services.youtube.model.SearchResult;
-import com.google.api.services.youtube.model.Thumbnail;
 import dev.br.teaming.domain.video.domain.vo.*;
 import lombok.AccessLevel;
 import lombok.Getter;
