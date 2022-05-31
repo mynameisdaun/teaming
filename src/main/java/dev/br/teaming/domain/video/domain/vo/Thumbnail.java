@@ -15,10 +15,10 @@ public class Thumbnail {
 
     private ThumbnailType type;
     private String url;
-    private Double width;
-    private Double height;
+    private Long width;
+    private Long height;
 
-    public Thumbnail(final ThumbnailType type, final String url, final Double width, final Double height) {
+    public Thumbnail(final ThumbnailType type, final String url, final Long width, final Long height) {
         if (Objects.isNull(type) || Strings.isBlank(url) || width == null || width <= 0 || height == null || height <= 0) {
             throw new IllegalArgumentException();
         }
@@ -26,6 +26,10 @@ public class Thumbnail {
         this.url = url;
         this.width = width;
         this.height = height;
+    }
+
+    public static Thumbnail of (final ThumbnailType type, final com.google.api.services.youtube.model.Thumbnail thumbnail) {
+        return new Thumbnail(type, thumbnail.getUrl(), thumbnail.getWidth(), thumbnail.getHeight());
     }
 
     public boolean isDefault() {

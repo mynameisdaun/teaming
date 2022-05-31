@@ -43,7 +43,7 @@ public class Fixture {
     }
 
     public static Thumbnail thumbnail() {
-        return new Thumbnail(ThumbnailType.DEFAULT, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120.0, 90.0);
+        return new Thumbnail(ThumbnailType.DEFAULT, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120L, 90L);
     }
 
     public static Youtuber youtuber() {

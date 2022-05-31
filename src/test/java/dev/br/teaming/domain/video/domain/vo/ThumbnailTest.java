@@ -16,13 +16,13 @@ class ThumbnailTest {
     @Test
     void create() throws Exception {
         //given&&when
-        final Thumbnail thumbnail = new Thumbnail(ThumbnailType.DEFAULT, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120.0, 90.0);
+        final Thumbnail thumbnail = new Thumbnail(ThumbnailType.DEFAULT, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120L, 90L);
         //then
         assertThat(thumbnail).isNotNull();
         assertThat(thumbnail.isDefault()).isTrue();
         assertThat(thumbnail.getUrl()).isEqualTo("https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg");
-        assertThat(thumbnail.getWidth()).isEqualTo(120.0);
-        assertThat(thumbnail.getHeight()).isEqualTo(90.0);
+        assertThat(thumbnail.getWidth()).isEqualTo(120L);
+        assertThat(thumbnail.getHeight()).isEqualTo(90L);
     }
 
     @DisplayName(value = "썸네일 타입은 빈 값이 될 수 없다")
@@ -30,7 +30,7 @@ class ThumbnailTest {
     @ParameterizedTest
     void create_fail_thumbnail_type(final ThumbnailType type) throws Exception {
         //given&&when&&then
-        assertThatThrownBy(() -> new Thumbnail(type, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120.0, 90.0))
+        assertThatThrownBy(() -> new Thumbnail(type, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120L, 90L))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -40,7 +40,7 @@ class ThumbnailTest {
     @ParameterizedTest
     void create_fail_wrong_url(final String url) throws Exception {
         //given&&when&&then
-        assertThatThrownBy(() -> new Thumbnail(ThumbnailType.DEFAULT, url, 120.0, 90.0))
+        assertThatThrownBy(() -> new Thumbnail(ThumbnailType.DEFAULT, url, 120L, 90L))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -48,9 +48,9 @@ class ThumbnailTest {
     @ValueSource(strings = {"-1", "0"})
     @NullSource
     @ParameterizedTest
-    void create_fail_wrong_width(final Double width) throws Exception {
+    void create_fail_wrong_width(final Long width) throws Exception {
         //given&&when&&then
-        assertThatThrownBy(() -> new Thumbnail(ThumbnailType.DEFAULT, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", width, 90.0))
+        assertThatThrownBy(() -> new Thumbnail(ThumbnailType.DEFAULT, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", width, 90L))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -58,9 +58,9 @@ class ThumbnailTest {
     @ValueSource(strings = {"-1", "0"})
     @NullSource
     @ParameterizedTest
-    void create_fail_wrong_height(final Double height) throws Exception {
+    void create_fail_wrong_height(final Long height) throws Exception {
         //given&&when&&then
-        assertThatThrownBy(() -> new Thumbnail(ThumbnailType.DEFAULT, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120.0, height))
+        assertThatThrownBy(() -> new Thumbnail(ThumbnailType.DEFAULT, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120L, height))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -69,7 +69,7 @@ class ThumbnailTest {
     @ParameterizedTest
     void isDefault(final ThumbnailType type) {
         //given
-        final Thumbnail thumbnail = new Thumbnail(type, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120.0, 90.0);
+        final Thumbnail thumbnail = new Thumbnail(type, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120L, 90L);
         //when&&then
         assertThat(thumbnail.isDefault()).isFalse();
     }
@@ -79,7 +79,7 @@ class ThumbnailTest {
     @ParameterizedTest
     void isMedium(final ThumbnailType type) {
         //given
-        final Thumbnail thumbnail = new Thumbnail(type, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120.0, 90.0);
+        final Thumbnail thumbnail = new Thumbnail(type, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120L, 90L);
         //when&&then
         assertThat(thumbnail.isMedium()).isFalse();
     }
@@ -89,7 +89,7 @@ class ThumbnailTest {
     @ParameterizedTest
     void isHigh(final ThumbnailType type) {
         //given
-        final Thumbnail thumbnail = new Thumbnail(type, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120.0, 90.0);
+        final Thumbnail thumbnail = new Thumbnail(type, "https://i.ytimg.com/vi/ZuPMKJ0G1R0/default.jpg", 120L, 90L);
         //when&&then
         assertThat(thumbnail.isHigh()).isFalse();
     }

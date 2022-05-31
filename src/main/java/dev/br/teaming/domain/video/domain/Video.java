@@ -1,5 +1,8 @@
 package dev.br.teaming.domain.video.domain;
 
+import com.google.api.services.youtube.model.ResourceId;
+import com.google.api.services.youtube.model.SearchResult;
+import com.google.api.services.youtube.model.Thumbnail;
 import dev.br.teaming.domain.video.domain.vo.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -52,6 +55,15 @@ public class Video {
         this.publishedAt = publishedAt;
         this.youtuber = youtuber;
         this.thumbnails = thumbnails;
+    }
+
+    public Video(SearchResult singleVideo) {
+        this.videoId = new VideoId(singleVideo.getId().getVideoId());
+        this.videoTitle = new VideoTitle(singleVideo.getSnippet().getTitle());
+        this.description = new Description(singleVideo.getSnippet().getDescription());
+        this.publishedAt = new Date(singleVideo.getSnippet().getPublishedAt().getValue());
+        this.youtuber = new Youtuber(singleVideo.getSnippet().getChannelId(), singleVideo.getSnippet().getChannelTitle());
+        this.thumbnails = new Thumbnails(singleVideo.getSnippet().getThumbnails());
     }
 
     @Override
