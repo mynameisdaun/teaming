@@ -12,11 +12,13 @@ import com.google.api.services.youtube.model.ResourceId;
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.SearchResult;
 import com.google.api.services.youtube.model.Thumbnail;
+import dev.br.teaming.domain.video.dto.VideoDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -42,8 +44,9 @@ public class DefaultYoutubeVideoClient implements YoutubeVideoClient {
     private YouTube youtube;
 
     @Override
-    public void searchYoutubeVideoByKeyWord(String keyword) {
+    public List<VideoDTO> searchYoutubeVideoByKeyWord(String keyword) {
         // Read the developer key from youtube.properties
+        List<VideoDTO> response = new ArrayList<>();
         Properties properties = new Properties();
         try {
             InputStream in = YouTube.Search.class.getResourceAsStream("/" + PROPERTIES_FILENAME);
@@ -96,9 +99,12 @@ public class DefaultYoutubeVideoClient implements YoutubeVideoClient {
             List<SearchResult> searchResultList = searchResponse.getItems();
 
             if (searchResultList != null) {
-                prettyPrint(searchResultList.iterator(), queryTerm);
-            }
+                Iterator<SearchResult> iterator = searchResultList.iterator();
+                while (iterator.hasNext()) {
+                    SearchResult singleVideo = VideoDTO.from(iterator.next());
+                }
 
+            }
         } catch (GoogleJsonResponseException e) {
             log.error("There was a service error: " + e.getDetails().getCode() + " : "
                     + e.getDetails().getMessage());
@@ -107,6 +113,7 @@ public class DefaultYoutubeVideoClient implements YoutubeVideoClient {
         } catch (Throwable t) {
             t.printStackTrace();
         }
+        return response;
     }
 
     /*
