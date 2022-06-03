@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -28,13 +29,14 @@ public class VideoService {
     public List<VideoDTO> findAllByPlayerTag(PlayerTag playerTag) {
         Player player = playerRepository.findByPlayerTag(playerTag)
                 .orElseThrow(NoSuchElementException::new);
-        return videoRepository.findByYoutuberIn(player.getYoutubers().getYoutubers())
-                .stream()
-                .map(VideoDTO::new)
-                .collect(Collectors.toList());
+//        return videoRepository.findByYoutuberIn(player.getYoutubers().getYoutubers())
+//                .stream()
+//                .map(VideoDTO::new)
+//                .collect(Collectors.toList());
+        return null;
     }
 
-    public List<VideoDTO> manualVideoUpdate(String keyword) {
+    public List<VideoDTO> manualVideoUpdate(String keyword) throws IOException {
         youtubeVideoClient.searchYoutubeVideoByKeyWord(keyword);
         return null;
     }

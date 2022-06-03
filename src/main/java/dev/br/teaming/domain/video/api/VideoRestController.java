@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 @RequestMapping("/api/video")
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
@@ -25,7 +26,7 @@ public class VideoRestController {
     }
 
     @PostMapping("/manualUpdate")
-    public ResponseEntity<?> manualUpdate(final HttpServletRequest request) {
+    public ResponseEntity<?> manualUpdate(final HttpServletRequest request) throws IOException {
         String keyword = "홀릿";
         return ResponseEntity.ok(videoService.manualVideoUpdate(keyword));
     }

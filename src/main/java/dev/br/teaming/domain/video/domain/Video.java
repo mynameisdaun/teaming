@@ -5,6 +5,7 @@ import dev.br.teaming.domain.video.domain.vo.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,7 +14,7 @@ import java.util.Objects;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "video")
-@Getter
+@Getter @ToString
 public class Video {
 
     @Id
@@ -35,8 +36,7 @@ public class Video {
     @Column(name = "published_date_time", nullable = false)
     private Date publishedAt;
 
-    @Embedded
-    @Column(name = "youtuber", nullable = false)
+    @OneToOne
     private Youtuber youtuber;
 
     @Embedded
@@ -55,13 +55,15 @@ public class Video {
         this.thumbnails = thumbnails;
     }
 
-    public Video(SearchResult singleVideo) {
-        this.videoId = new VideoId(singleVideo.getId().getVideoId());
-        this.videoTitle = new VideoTitle(singleVideo.getSnippet().getTitle());
-        this.description = new Description(singleVideo.getSnippet().getDescription());
-        this.publishedAt = new Date(singleVideo.getSnippet().getPublishedAt().getValue());
-        this.youtuber = new Youtuber(singleVideo.getSnippet().getChannelId(), singleVideo.getSnippet().getChannelTitle());
-        this.thumbnails = new Thumbnails(singleVideo.getSnippet().getThumbnails());
+    public static Video from (SearchResult singleVideo) {
+        return new Video(
+                new VideoId(singleVideo.getId().getVideoId()),
+                new VideoTitle(singleVideo.getSnippet().getTitle()),
+                new Description(singleVideo.getSnippet().getDescription()),
+                new Date(singleVideo.getSnippet().getPublishedAt().getValue()),
+                new Youtuber(singleVideo.getSnippet().getChannelId(), singleVideo.getSnippet().getChannelTitle()),
+                new Thumbnails(singleVideo.getSnippet().getThumbnails())
+        );
     }
 
     @Override

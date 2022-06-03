@@ -39,11 +39,11 @@ public class Player {
     @Embedded
     private Club club;
 
-    @Embedded
-    private Youtubers youtubers;
+//    @Embedded
+//    private Youtubers youtubers = new Youtubers();
 
     @Embedded
-    private Brawlers brawlers;
+    private Brawlers brawlers = new Brawlers();
 
     public Player(PlayerName playerName, PlayerTag playerTag, PlayerTrophy playerTrophy, PlayerExp playerExp, Victory victory, Club club, Brawlers brawlers, Youtubers youtubers) {
         if (Objects.isNull(playerName) || Objects.isNull(playerTag) || Objects.isNull(playerTrophy) ||
@@ -57,7 +57,7 @@ public class Player {
         this.victory = victory;
         this.club = club;
         this.brawlers = brawlers;
-        this.youtubers = youtubers;
+        //this.youtubers = youtubers;
     }
 
     @Override
