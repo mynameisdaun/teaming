@@ -37,7 +37,7 @@ public class Video {
     private Date publishedAt;
 
     @OneToOne
-    private Youtuber youtuber;;
+    private Youtuber youtuber;
 
     @Embedded
     private Thumbnails thumbnails;
