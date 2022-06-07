@@ -6,6 +6,7 @@ import com.google.api.services.youtube.model.ThumbnailDetails;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Embeddable;
@@ -16,6 +17,7 @@ import java.util.Objects;
 @Getter
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString
 public class Thumbnails {
 
     @ElementCollection

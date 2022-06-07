@@ -3,6 +3,8 @@ package dev.br.teaming.domain.video.domain.vo;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 
 import javax.persistence.Embeddable;
@@ -11,6 +13,8 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Embeddable
+@ToString
+@Slf4j
 public class Thumbnail {
 
     private ThumbnailType type;
@@ -29,7 +33,15 @@ public class Thumbnail {
     }
 
     public static Thumbnail of (final ThumbnailType type, final com.google.api.services.youtube.model.Thumbnail thumbnail) {
-        return new Thumbnail(type, thumbnail.getUrl(), thumbnail.getWidth(), thumbnail.getHeight());
+        Long width = thumbnail.getWidth();
+        if(Objects.isNull(width)) {
+            width = 600L;
+        }
+        Long height = thumbnail.getHeight();
+        if(Objects.isNull(height)) {
+            height = 600L;
+        }
+        return new Thumbnail(type, thumbnail.getUrl(), width, height);
     }
 
     public boolean isDefault() {

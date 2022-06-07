@@ -1,9 +1,9 @@
 package dev.br.teaming.domain.video.domain.vo;
 
-import dev.br.teaming.domain.player.domain.Player;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.apache.logging.log4j.util.Strings;
 
 import javax.persistence.*;
@@ -11,11 +11,12 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString
 public class Youtuber {
 
     @Id
     @Column(name = "youtuber_seq")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long youtuberSeq;
 
     @Column(name = "youtuber_id", unique = true)

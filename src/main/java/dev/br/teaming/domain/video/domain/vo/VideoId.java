@@ -1,9 +1,6 @@
 package dev.br.teaming.domain.video.domain.vo;
 
-import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.apache.logging.log4j.util.Strings;
 
 import javax.persistence.Embeddable;
@@ -12,6 +9,7 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @EqualsAndHashCode
+@ToString
 public class VideoId {
 
     private String videoId;
