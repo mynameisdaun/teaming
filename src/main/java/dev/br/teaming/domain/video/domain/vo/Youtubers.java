@@ -23,10 +23,8 @@ public class Youtubers {
         if (Objects.isNull(youtubers) || youtubers.isEmpty()) {
             throw new IllegalArgumentException();
         }
-        this.youtubers = youtubers;;
+        this.youtubers = youtubers;
     }
-
-
 
     public boolean isEmpty() {
         return this.youtubers.isEmpty();

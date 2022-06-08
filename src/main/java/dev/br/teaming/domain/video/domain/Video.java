@@ -36,7 +36,7 @@ public class Video {
     @Column(name = "published_date_time", nullable = false)
     private Date publishedAt;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Youtuber youtuber;
 
     @Embedded
