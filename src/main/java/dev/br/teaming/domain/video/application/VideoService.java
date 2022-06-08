@@ -3,6 +3,7 @@ package dev.br.teaming.domain.video.application;
 import dev.br.teaming.domain.player.domain.Player;
 import dev.br.teaming.domain.player.domain.vo.PlayerTag;
 import dev.br.teaming.domain.player.repository.PlayerRepository;
+import dev.br.teaming.domain.video.domain.Video;
 import dev.br.teaming.domain.video.dto.VideoDTO;
 import dev.br.teaming.domain.video.infra.YoutubeVideoClient;
 import dev.br.teaming.domain.video.repository.VideoRepository;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -29,15 +31,19 @@ public class VideoService {
     public List<VideoDTO> findAllByPlayerTag(PlayerTag playerTag) {
         Player player = playerRepository.findByPlayerTag(playerTag)
                 .orElseThrow(NoSuchElementException::new);
-//        return videoRepository.findByYoutuberIn(player.getYoutubers().getYoutubers())
-//                .stream()
-//                .map(VideoDTO::new)
-//                .collect(Collectors.toList());
-        return null;
+        return videoRepository.findByYoutuberIn(player.getYoutubers().getYoutubers())
+                .stream()
+                .map(VideoDTO::new)
+                .collect(Collectors.toList());
     }
 
     public List<VideoDTO> manualVideoUpdate(String keyword) throws IOException {
-        youtubeVideoClient.searchYoutubeVideoByKeyWord(keyword);
-        return null;
+        List<VideoDTO> response = new ArrayList<>();
+        List<Video> videos = youtubeVideoClient.searchYoutubeVideoByKeyWord(keyword);
+        for(Video video : videos) {
+            log.info(video.toString());
+            response.add(new VideoDTO(videoRepository.save(video)));
+        }
+        return response;
     }
 }

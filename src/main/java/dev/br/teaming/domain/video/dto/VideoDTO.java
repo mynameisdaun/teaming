@@ -43,20 +43,4 @@ public class VideoDTO {
         });
         this.thumbnails=thumbnails;
     }
-
-    public static VideoDTO from (final SearchResult singleVideo) {
-        List<Map<String, Object>> thumbnails = new ArrayList<>();
-        SearchResultSnippet snippet = singleVideo.getSnippet();
-        for(String type : snippet.getThumbnails().keySet()) {
-            Map<String, Object> map = new HashMap<>();
-            Thumbnail thumbnail = (Thumbnail) snippet.getThumbnails().get(type);
-            map.put("type", type);
-            map.put("url", thumbnail.getUrl());
-            map.put("width",thumbnail.getWidth());
-            map.put("height",thumbnail.getHeight());
-            thumbnails.add(map);
-        }
-        return new VideoDTO(singleVideo.getId().getVideoId(), snippet.getTitle(), snippet.getDescription(), new Date(snippet.getPublishedAt().getValue()),
-                            snippet.getChannelId(), snippet.getChannelTitle(), thumbnails);
-    }
 }
